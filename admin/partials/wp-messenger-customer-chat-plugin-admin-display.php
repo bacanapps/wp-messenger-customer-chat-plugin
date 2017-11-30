@@ -19,6 +19,10 @@
 	<div id="icon-options-general" class="icon32"></div>
 	<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 
+	<p>Facebook recently made available in open beta their <a href="https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin" target="_blank">Messenger Customer Chat Plugin</a> which allows you to integrate your Messenger experience directly into your website.</p>
+
+	<p>Don't be left out about the cool stuff. Just follow the instructions below... :)</p>
+
 	<div id="poststuff">
 
 		<div id="post-body" class="metabox-holder columns-2">
@@ -38,6 +42,27 @@
 				        settings_fields($this->plugin_name);
 				        do_settings_sections($this->plugin_name);
 				    ?>
+
+				    <div class="meta-box-sortables ui-sortable">
+
+						<div class="postbox">
+
+							<h2><span><?php esc_attr_e( 'Facebok Page (Messenger Platform Whitelisted Domains)', 'WpAdminStyle' ); ?></span></h2>
+
+							<div class="inside">
+
+								<p>Add your website's domain to <strong>Whitelisted Domains</strong> on your Facebook Page. Go to your <strong>Facebook Page</strong> &gt; <strong>Settings</strong> &gt; <strong>Messenger Platform</strong> then scroll below and find <strong>Whitelisted Domains</strong>.</p>
+
+								<p>E.g.: <strong>https://dorelljames.com</strong></p>
+
+								<img src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/messenger-whitelist-domain.png" alt="" class="alignnone size-full wp-image-1845" />
+							</div>
+							<!-- .inside -->
+
+						</div>
+						<!-- .postbox -->
+
+					</div>
 					
 					<div class="meta-box-sortables ui-sortable">
 
@@ -47,18 +72,26 @@
 
 							<div class="inside">
 
-								<p><?php esc_attr_e(
-										'Facebook Messenger Chatbots are tied up with Facebook Pages. In order for this plugin to work, you need to provide your Facebook Page ID below.',
-										'WpAdminStyle'
-									); ?></p>
+								<p>Let's look up your <strong>Facebook Page ID</strong> which we need to set this up. For this, let's use a free service at <a href="https://findmyfbid.in/" target="_blank" rel="noopener">Find Your Facebook ID</a> and paste your Facebook Page URL.</p>
 
-				                    <fieldset>
-				                        <legend class="screen-reader-text"><span><?php _e('Choose your prefered cdn provider', $this->plugin_name); ?></span></legend>
-				                        <input type="number" class="regular-text" id="<?php echo $this->plugin_name; ?>-facebook_page_id" name="<?php echo $this->plugin_name; ?>[facebook_page_id]" value="<?php if(!empty($facebook_page_id)) echo $facebook_page_id; ?>"/>
-				                    </fieldset>
-						        </fieldset>
+								<p>E.g.: <strong>https://www.facebook.com/iamDJBot.</strong></p>
 
-						        <?php submit_button('Save all changes', 'primary','submit', TRUE); ?>
+								<p><strong>IMPORTANT: Take note of the number.</strong></p>
+
+								<img class="alignnone size-full wp-image-1825" src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/findfbid.jpg" alt="" />
+
+								<p>Alternatively, you can go to your <strong>Facebook Page</strong> &gt; <strong>About</strong> and scroll down bottom until you see <strong>Page ID</strong>.</p>
+
+								<img class="alignone size-full wp-image-1826" src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/Screen-Shot-2017-11-30-at-11.26.41-AM.png" alt="" width="1051" height="607" />
+
+								<br/>
+
+								<p>Now, enter your <strong>Facebook Page ID</strong> below and that's it. Congratulations!</p>
+
+		                        <input type="number" class="regular-text" id="<?php echo $this->plugin_name; ?>-facebook_page_id" name="<?php echo $this->plugin_name; ?>[facebook_page_id]" value="<?php if(!empty($facebook_page_id)) echo $facebook_page_id; ?>"/>
+		                        <span class="description"><?php esc_attr_e( 'Enter Facebook Page ID.', 'WpAdminStyle' ); ?></span><br>
+
+						        <?php submit_button('Save changes', 'primary','submit', TRUE); ?>
 							</div>
 							<!-- .inside -->
 
@@ -73,6 +106,44 @@
 
 			<!-- sidebar -->
 			<div id="postbox-container-1" class="postbox-container">
+
+				<div class="meta-box-sortables">
+
+					<div class="postbox">
+
+						<h2><span><?php esc_attr_e(
+									'Development Roadmap', 'WpAdminStyle'
+								); ?></span></h2>
+
+						<div class="inside">
+							<p>Plugin is basically just a starter. I am still planning to add more features to it.</p>
+							<a href="https://trello.com/b/XWcfMnfp" target="_blank">View Roadmap</a>
+						</div>
+						<!-- .inside -->
+
+					</div>
+					<!-- .postbox -->
+
+				</div>
+
+				<div class="meta-box-sortables">
+
+					<div class="postbox">
+
+						<h2><span><?php esc_attr_e(
+									'Donation', 'WpAdminStyle'
+								); ?></span></h2>
+
+						<div class="inside">
+							<p>Buy me coffee, beer or tea. Any amount will help to continue improving this plugin.</p>
+							<a href="https://paypal.me/dorelljames" target="_blank">paypal.me/dorelljames</a>
+						</div>
+						<!-- .inside -->
+
+					</div>
+					<!-- .postbox -->
+
+				</div>
 
 				<div class="meta-box-sortables">
 
