@@ -59,16 +59,25 @@ class WPMCCP_Public {
 	 * Messenger chat required div
 	 */
     public function wpmccp_messenger_chat() {
-		$facebook_page_id = isset($this->WPMCCP_options['facebook_page_id']) ? $this->WPMCCP_options['facebook_page_id'] : 1678638095724206;
+		$currentPost = get_post();
 
-        echo '<div class="fb-customerchat" page_id="' . $facebook_page_id . '" minimized="false"></div>';
+		// Get current ref PREFIX to use together with all ref when it exists
+		$currentRefPrefix = isset($this->WPMCCP_options['ref_prefix']) && ! empty($this->WPMCCP_options['ref_prefix']) ? $this->WPMCCP_options['ref_prefix'] : null;
+
+		// If ref is set, use it else fallback to post name slug
+		$currentRef = isset($this->WPMCCP_options['ref']) && ! empty($this->WPMCCP_options['ref'][$currentPost->ID]) ? $currentRefPrefix . $this->WPMCCP_options['ref'][$currentPost->ID] : $currentRefPrefix . $currentPost->post_name;
+
+		$facebook_page_id = isset($this->WPMCCP_options['facebook_page_id']) ? $this->WPMCCP_options['facebook_page_id'] : null;
+		$is_minimized = isset($this->WPMCCP_options['is_minimized']) && $this->WPMCCP_options['is_minimized'] ?  'true' : 'false';
+
+        echo '<div class="fb-customerchat" page_id="' . $facebook_page_id . '" ref="' . $currentRef . '" minimized="' . $is_minimized . '"></div>';
     }
 
 	/**
 	 * Facebook SDK to initialize
 	 */
     public function wpmccp_fb_sdk() {
-		$facebook_app_id = isset($this->WPMCCP_options['facebook_app_id']) ? $this->WPMCCP_options['facebook_app_id'] : 1678638095724206;
+		$facebook_app_id = isset($this->WPMCCP_options['custom_fb_sdk_app_id']) && ! empty($this->WPMCCP_options['custom_fb_sdk_app_id']) ? $this->WPMCCP_options['custom_fb_sdk_app_id'] : 1678638095724206;
 
 		echo '<script>window.fbAsyncInit=function(){FB.init({appId : "' . $facebook_app_id . '", autoLogAppEvents : true, xfbml : true, version : "v2.11"});}; (function(d, s, id){var js, fjs=d.getElementsByTagName(s)[0]; if (d.getElementById(id)){return;}js=d.createElement(s); js.id=id; js.src="https://connect.facebook.net/en_US/sdk.js"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>';
     }
