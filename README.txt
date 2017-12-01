@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/dorelljames
 Tags: messenger customer chat plugin, messenger chat, messenger plugin, wordpress messenger, wordpress messenger plugin
 Requires at least: 4.9
 Tested up to: 4.9
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,3 +41,6 @@ Make sure to whitelist your site's domain in your Facebook Page > Settings > Mes
 
 = 1.0 =
 * Basic setup to get you started and show FB's Messenger Customer Chat Plugin on your Wordpress site.
+
+= 1.1.0 =
+* Add support for "ref" and "minimized" attribute. Add misc functions such as "ref_prefix" and custom "FB App ID" on the embedded FB SDK of the plugin

@@ -16,7 +16,7 @@
  * Plugin Name:       Wordpress Messenger Customer Chat Plugin (WPMCCP)
  * Plugin URI:        https://github.com/dorelljames/wp-messenger-customer-chat-plugin
  * Description:       WordPress Messenger Customer Chat Plugin (WPMCCP) allows you to integrate your Messenger experience directly into your website.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Dorell James Galang
  * Author URI:        https://www.paypal.me/dorelljames
  * License:           GPL-2.0+
