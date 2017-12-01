@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Wordpress Messenger Customer Chat Plugin allows you to integrate your Messenger experience directly into your website.
+Wordpress Messenger Customer Chat Plugin (WMCCP) allows you to integrate your Messenger experience directly into your website.
 
 == Description ==
 
@@ -22,7 +22,7 @@ This section describes how to install the plugin and get it working.
 
 e.g.
 
-1. Upload entire `wp-messenger-customer-chat-plugin.php` to the `/wp-content/plugins/` directory
+1. Upload entire `wp-messenger-customer-chat-plugin` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 You will find Wordpress Messenger Customer Chat Plugin menu in your WordPress admin panel.

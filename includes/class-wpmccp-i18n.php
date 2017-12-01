@@ -9,8 +9,8 @@
  * @link       https://www.paypal.me/dorelljames
  * @since      1.0.0
  *
- * @package    Wp_Messenger_Customer_Chat_Plugin
- * @subpackage Wp_Messenger_Customer_Chat_Plugin/includes
+ * @package    WPMCCP
+ * @subpackage WPMCCP/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Wp_Messenger_Customer_Chat_Plugin
- * @subpackage Wp_Messenger_Customer_Chat_Plugin/includes
+ * @package    WPMCCP
+ * @subpackage WPMCCP/includes
  * @author     Dorell James Galang <galangdj@gmail.com>
  */
-class Wp_Messenger_Customer_Chat_Plugin_i18n {
+class WPMCCP_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Wp_Messenger_Customer_Chat_Plugin_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'wp-messenger-customer-chat-plugin',
+			'wpmccp',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

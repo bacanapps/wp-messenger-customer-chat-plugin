@@ -22,7 +22,7 @@
  * @link       https://www.paypal.me/dorelljames
  * @since      1.0.0
  *
- * @package    Wp_Messenger_Customer_Chat_Plugin
+ * @package    WPMCCP
  */
 
 // If uninstall not called from WordPress, then exit.

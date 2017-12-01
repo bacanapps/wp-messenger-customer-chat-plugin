@@ -6,8 +6,8 @@
  * @link       https://www.paypal.me/dorelljames
  * @since      1.0.0
  *
- * @package    Wp_Messenger_Customer_Chat_Plugin
- * @subpackage Wp_Messenger_Customer_Chat_Plugin/admin
+ * @package    WPMCCP
+ * @subpackage WPMCCP/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Wp_Messenger_Customer_Chat_Plugin
- * @subpackage Wp_Messenger_Customer_Chat_Plugin/admin
+ * @package    WPMCCP
+ * @subpackage WPMCCP/admin
  * @author     Dorell James Galang <galangdj@gmail.com>
  */
-class Wp_Messenger_Customer_Chat_Plugin_Admin {
+class WPMCCP_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -59,21 +59,21 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function wpmccp_enqueue_styles() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Messenger_Customer_Chat_Plugin_Loader as all of the hooks are defined
+		 * defined in WPMCCP_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wp_Messenger_Customer_Chat_Plugin_Loader will then create the relationship
+		 * The WPMCCP_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-messenger-customer-chat-plugin-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpmccp-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -82,21 +82,21 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function wpmccp_enqueue_scripts() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Messenger_Customer_Chat_Plugin_Loader as all of the hooks are defined
+		 * defined in WPMCCP_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wp_Messenger_Customer_Chat_Plugin_Loader will then create the relationship
+		 * The WPMCCP_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-messenger-customer-chat-plugin-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpmccp-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -106,7 +106,7 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
 	 * @since    1.0.0
 	 */
 
-	public function add_plugin_admin_menu() {
+	public function wpmccp_add_plugin_admin_menu() {
 
 	    /*
 	     * Add a settings page for this plugin to the Settings menu.
@@ -116,7 +116,7 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
 	     *        Administration Menus: http://codex.wordpress.org/Administration_Menus
 	     *
 	     */
-	    add_options_page( 'WP Messenger Customer Chat Plugin', 'WP Messenger Customer Chat Plugin', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
+	    add_options_page( 'WordPress Messenger Customer Chat Plugin (WMCCP)', 'WPMCCP', 'manage_options', $this->plugin_name, array($this, 'wpmccp_display_plugin_setup_page')
 	    );
 	}
 
@@ -126,7 +126,7 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
 	 * @since    1.0.0
 	 */
 
-	public function add_action_links( $links ) {
+	public function wpmccp_add_action_links( $links ) {
 	    /*
 	    *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
 	    */
@@ -143,14 +143,14 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
 	 * @since    1.0.0
 	 */
 
-	public function display_plugin_setup_page() {
-	    include_once( 'partials/wp-messenger-customer-chat-plugin-admin-display.php' );
+	public function wpmccp_display_plugin_setup_page() {
+	    include_once( 'partials/wpmccp-admin-display.php' );
 	}
 
 	/**
 	 * Input validation
 	 */
-	public function validate($input) {
+	public function wpmccp_validate($input) {
     	// All checkboxes inputs        
     	$valid = array();
 
@@ -159,8 +159,8 @@ class Wp_Messenger_Customer_Chat_Plugin_Admin {
     	return $valid;
     }
 
-    public function options_update() {
-		register_setting($this->plugin_name, $this->plugin_name, array($this, 'validate'));
+    public function wpmccp_options_update() {
+		register_setting($this->plugin_name, $this->plugin_name, array($this, 'wpmccp_validate'));
 	}
 
 }

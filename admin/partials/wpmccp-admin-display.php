@@ -8,8 +8,8 @@
  * @link       https://www.paypal.me/dorelljames
  * @since      1.0.0
  *
- * @package    Wp_Messenger_Customer_Chat_Plugin
- * @subpackage Wp_Messenger_Customer_Chat_Plugin/admin/partials
+ * @package    WPMCCP
+ * @subpackage WPMCCP/admin/partials
  */
 ?>
 
