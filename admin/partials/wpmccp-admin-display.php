@@ -14,7 +14,7 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-	<div class="wrap">
+<div class="wrap">
 
 	<div id="icon-options-general" class="icon32"></div>
 	<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
@@ -23,86 +23,152 @@
 
 	<p>Don't be left out about the cool stuff. Just follow the instructions below... :)</p>
 
+	<?php
+        $active_tab = isset($_GET[ 'tab' ]) ? $_GET[ 'tab' ] : 'general';
+    ?>
+     
+    <h2 class="nav-tab-wrapper">
+        <a href="?page=wpmccp&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General</a>
+        <a href="?page=wpmccp&tab=ref_options" class="nav-tab <?php echo $active_tab == 'ref_options' ? 'nav-tab-active' : ''; ?>">Ref Options</a>
+    </h2>
+
 	<div id="poststuff">
 
 		<div id="post-body" class="metabox-holder columns-2">
 
-			<!-- main content -->
-			<div id="post-body-content">
-				<form method="post" name="cleanup_options" action="options.php">
-					<?php
-				        //Grab all options
-				        $options = get_option($this->plugin_name);
+			<?php if ( ! isset($active_tab) || $active_tab === 'general' ) : ?>
+				
+				<!-- main content -->
+				<div id="post-body-content">
+					<form method="post" action="options.php">
+						<?php
+					        //Grab all options
+					        $options = get_option($this->plugin_name);
 
-				        // Cleanup
-				        $facebook_page_id = $options['facebook_page_id'];
-				    ?>
+					        // Cleanup
+					        $facebook_page_id = $options['facebook_page_id'];
+					    ?>
 
-				    <?php
-				        settings_fields($this->plugin_name);
-				        do_settings_sections($this->plugin_name);
-				    ?>
+					    <?php
+					        settings_fields($this->plugin_name);
+					        do_settings_sections($this->plugin_name);
+					    ?>
 
-				    <div class="meta-box-sortables ui-sortable">
+					    <div class="meta-box-sortables ui-sortable">
 
-						<div class="postbox">
+							<div class="postbox">
 
-							<h2><span><?php esc_attr_e( 'Facebok Page (Messenger Platform Whitelisted Domains)', 'WpAdminStyle' ); ?></span></h2>
+								<h2><span><?php esc_attr_e( 'Facebok Page (Messenger Platform Whitelisted Domains)', 'WpAdminStyle' ); ?></span></h2>
 
-							<div class="inside">
+								<div class="inside">
 
-								<p>Add your website's domain to <strong>Whitelisted Domains</strong> on your Facebook Page. Go to your <strong>Facebook Page</strong> &gt; <strong>Settings</strong> &gt; <strong>Messenger Platform</strong> then scroll below and find <strong>Whitelisted Domains</strong>.</p>
+									<p>Add your website's domain to <strong>Whitelisted Domains</strong> on your Facebook Page. Go to your <strong>Facebook Page</strong> &gt; <strong>Settings</strong> &gt; <strong>Messenger Platform</strong> then scroll below and find <strong>Whitelisted Domains</strong>.</p>
 
-								<p>E.g.: <strong>https://dorelljames.com</strong></p>
+									<p>Example: <strong>https://dorelljames.com</strong></p>
 
-								<img src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/messenger-whitelist-domain.png" alt="" class="alignnone size-full wp-image-1845" />
+									<img src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/messenger-whitelist-domain.png" alt="" class="alignnone size-full wp-image-1845" />
+									<br/>
+								</div>
+								<!-- .inside -->
+
 							</div>
-							<!-- .inside -->
+							<!-- .postbox -->
 
 						</div>
-						<!-- .postbox -->
+						
+						<div class="meta-box-sortables ui-sortable">
 
-					</div>
+							<div class="postbox">
+
+								<h2><span><?php esc_attr_e( 'Facebok Page ID', 'WpAdminStyle' ); ?></span></h2>
+
+								<div class="inside">
+
+									<p>Let's look up your <strong>Facebook Page ID</strong> which we need to set this up. For this, let's use a free service at <a href="https://findmyfbid.in/" target="_blank" rel="noopener">Find Your Facebook ID</a> and paste your Facebook Page URL.</p>
+
+									<p>Example: <strong>https://www.facebook.com/iamDJBot</strong></p>
+
+									<p><strong>IMPORTANT: Take note of the number.</strong></p>
+
+									<img class="alignnone size-full wp-image-1825" src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/findfbid.jpg" alt="" />
+
+									<p>Alternatively, you can go to your <strong>Facebook Page</strong> &gt; <strong>About</strong> and scroll down bottom until you see <strong>Page ID</strong>.</p>
+
+									<img class="alignone size-full wp-image-1826" src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/Screen-Shot-2017-11-30-at-11.26.41-AM.png" alt="" width="1051" height="607" />
+
+									<br/>
+
+									<p>Now, enter your <strong>Facebook Page ID</strong> below and that's it. Congratulations!</p>
+
+			                        <input type="number" class="regular-text" id="<?php echo $this->plugin_name; ?>-facebook_page_id" name="<?php echo $this->plugin_name; ?>[facebook_page_id]" value="<?php if(!empty($facebook_page_id)) echo $facebook_page_id; ?>"/>
+			                        <span class="description"><?php esc_attr_e( 'Enter Facebook Page ID.', 'WpAdminStyle' ); ?></span><br>
+
+							        <?php submit_button('Save changes', 'primary','submit', TRUE); ?>
+								</div>
+								<!-- .inside -->
+
+							</div>
+							<!-- .postbox -->
+
+						</div>
+						<!-- .meta-box-sortables .ui-sortable -->
+
+						
+
+					</form>
+				</div>
+				<!-- post-body-content -->
+
+			<?php else: ?>
+
+				<div id="post-body-content">
+					<form method="post" action="options.php">
+						<div class="meta-box-sortables ui-sortable">
+
+							<div class="postbox">
+
+								<h2><span><?php esc_attr_e( 'Ref Parameters', 'WpAdminStyle' ); ?></span></h2>
+
+								<div class="inside">
+
+									<p>The plugin automatically sets the <strong>"ref"</strong> parameter to the current slug of the page, post or custom post type. However, you can customize them if you like to below.</p>
+
+									<?php
+						        		//Grab all options
+						        		$options = get_option($this->plugin_name);
+						        		var_dump($options);
+						        		var_dump(isset($options["ref"]));
+					        		?>
+
+									 <?php 
+										$pages = get_pages(); 
+
+										foreach ( $pages as $page ) {
+											// var_dump($page);
+											$option = '<p><a href="'. get_page_link( $page->ID ) . '" target="_blank">';
+											$option .= $page->post_title;
+											$option .= '</a>';
+											$var = isset($options["ref"]) ? $options["ref"][$page->ID] : "";
+											$option .= '<input type="text" class="regular-text" id="' . $this->plugin_name . '-ref-' . $page->ID . '" name="' . $this->plugin_name . '[ref][' . $page->ID . ']" value="' .  $var . '"/>';
 					
-					<div class="meta-box-sortables ui-sortable">
+											$option .= '</p>';
+											echo $option;
+										}
+									?>
 
-						<div class="postbox">
+									<?php submit_button('Save changes', 'primary','submit', TRUE); ?>
 
-							<h2><span><?php esc_attr_e( 'Facebok Page ID', 'WpAdminStyle' ); ?></span></h2>
+								</div>
+								<!-- .inside -->
 
-							<div class="inside">
-
-								<p>Let's look up your <strong>Facebook Page ID</strong> which we need to set this up. For this, let's use a free service at <a href="https://findmyfbid.in/" target="_blank" rel="noopener">Find Your Facebook ID</a> and paste your Facebook Page URL.</p>
-
-								<p>E.g.: <strong>https://www.facebook.com/iamDJBot.</strong></p>
-
-								<p><strong>IMPORTANT: Take note of the number.</strong></p>
-
-								<img class="alignnone size-full wp-image-1825" src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/findfbid.jpg" alt="" />
-
-								<p>Alternatively, you can go to your <strong>Facebook Page</strong> &gt; <strong>About</strong> and scroll down bottom until you see <strong>Page ID</strong>.</p>
-
-								<img class="alignone size-full wp-image-1826" src="https://dorelljames.com/wordpress/wp-content/uploads/2017/11/Screen-Shot-2017-11-30-at-11.26.41-AM.png" alt="" width="1051" height="607" />
-
-								<br/>
-
-								<p>Now, enter your <strong>Facebook Page ID</strong> below and that's it. Congratulations!</p>
-
-		                        <input type="number" class="regular-text" id="<?php echo $this->plugin_name; ?>-facebook_page_id" name="<?php echo $this->plugin_name; ?>[facebook_page_id]" value="<?php if(!empty($facebook_page_id)) echo $facebook_page_id; ?>"/>
-		                        <span class="description"><?php esc_attr_e( 'Enter Facebook Page ID.', 'WpAdminStyle' ); ?></span><br>
-
-						        <?php submit_button('Save changes', 'primary','submit', TRUE); ?>
 							</div>
-							<!-- .inside -->
+							<!-- .postbox -->
 
 						</div>
-						<!-- .postbox -->
+					</form>
+				</div>
 
-					</div>
-					<!-- .meta-box-sortables .ui-sortable -->
-				</form>
-			</div>
-			<!-- post-body-content -->
+			<?php endif ?>
 
 			<!-- sidebar -->
 			<div id="postbox-container-1" class="postbox-container">
