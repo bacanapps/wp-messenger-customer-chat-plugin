@@ -37,7 +37,7 @@
 
 					<h3>Pages</h3>
 					<?php 
-						$pages = get_pages(); 
+						$pages = get_pages(['posts_per_page' => -1]); 
 
 						foreach ( $pages as $page ) {
 
@@ -61,7 +61,7 @@
 
 					<h3>Posts</h3>
 					<?php 
-						$posts = get_posts(); 
+						$posts = get_posts(['posts_per_page' => -1]); 
 
 						foreach ( $posts as $post ) {
 
@@ -80,6 +80,7 @@
 					?>
 
 					<br>
+					
 					<hr>
 
 					<h3>Other Custom Post Types</h3>
@@ -88,10 +89,31 @@
 					<?php
 						$found_custom_post_type = false;
 						foreach ( get_post_types( '', 'names' ) as $post_type ) {
+
 							if ( ! in_array($post_type, ['page', 'post', 'attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache']) ) {
+
 								$found_custom_post_type = true;
-						   		echo '<p>' . $post_type . '</p>';
-							}	
+								$custom_post_types = get_posts(['posts_per_page' => -1, 'post_type' => $post_type]); 
+
+								echo '<hr /><h3 style="text-transform: capitalize;">' . $post_type . '</h3>';
+								foreach ( $custom_post_types as $custom_post_type ) {
+
+									$current_placeholder = isset($options['ref_prefix']) && ! empty($options['ref_prefix']) ? $options['ref_prefix'] . $custom_post_type->post_name : $custom_post_type->post_name;
+
+									$option = '<p><a href="'. get_page_link( $custom_post_type->ID ) . '" target="_blank">';
+									$option .= $custom_post_type->post_title;
+									$option .= '</a>';
+									$option .= ' (ID: ' . $custom_post_type->ID . ')';
+									$var = isset($options["ref"]) ? $options["ref"][$custom_post_type->ID] : "";
+									$option .= ' <input type="text" placeholder="' . $current_placeholder . '" class="all-options" id="' . $this->plugin_name . '-ref-' . $custom_post_type->ID . '" name="' . $this->plugin_name . '[ref][' . $custom_post_type->ID . ']" value="' .  $var . '"/>';
+			
+									$option .= '</p>';
+									echo $option;
+								}
+
+								echo '<br><hr />';
+
+							}
 						}
 
 						// No custom post type, so nothing to do
