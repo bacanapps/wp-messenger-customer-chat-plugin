@@ -1,7 +1,7 @@
-=== Wordpress Messenger Customer Chat Plugin ===
+=== Wordpress Messenger Customer Chat Plugin (WPMCCP) ===
 Contributors: dorelljames
 Donate link: https://www.paypal.me/dorelljames
-Tags: messenger customer chat plugin, messenger chat, messenger plugin, wordpress messenger
+Tags: messenger customer chat plugin, messenger chat, messenger plugin, wordpress messenger, wordpress messenger plugin
 Requires at least: 4.9
 Tested up to: 4.9
 Stable tag: 1.0.0
@@ -14,7 +14,7 @@ Wordpress Messenger Customer Chat Plugin (WMCCP) allows you to integrate your Me
 
 Facebook recently made available in open beta their [Messenger Customer Chat Plugin](https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin) which allows you to integrate your Messenger experience directly into your website.
 
-This plugin just makes it easy for you to add this on your website.
+This plugin just makes it easy for you to add this on your website by just putting your Facebook Page ID and whitelisting your domain on your Facebook Page.
 
 == Installation ==
 
