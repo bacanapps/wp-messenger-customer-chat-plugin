@@ -151,10 +151,20 @@ class WPMCCP_Admin {
 	 * Input validation
 	 */
 	public function wpmccp_validate($input) {
-    	// All checkboxes inputs        
     	$valid = array();
 
+		// Validation for ref options
+		if ( isset($input['ref']) ) {
+			foreach($input['ref'] as $index => $ref) {
+				$valid['ref'][$index] = sanitize_text_field($ref);
+			}
+		}
+
+		// Validate others
     	$valid['facebook_page_id'] = (isset($input['facebook_page_id']) && !empty($input['facebook_page_id'])) ? $input['facebook_page_id'] : null;
+		$valid['is_minimized'] = (isset($input['is_minimized']) && !empty($input['is_minimized']) && $input['is_minimized'] === "TRUE" ) ? true : false;
+		$valid['ref_prefix'] = (isset($input['ref_prefix']) && !empty($input['ref_prefix'])) ? $input['ref_prefix'] : null;
+		$valid['custom_fb_sdk_app_id'] = (isset($input['custom_fb_sdk_app_id']) && !empty($input['custom_fb_sdk_app_id'])) ? $input['custom_fb_sdk_app_id'] : null;
 
     	return $valid;
     }
