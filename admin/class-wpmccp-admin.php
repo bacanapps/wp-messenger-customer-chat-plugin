@@ -164,7 +164,8 @@ class WPMCCP_Admin {
     	$valid['facebook_page_id'] = (isset($input['facebook_page_id']) && !empty($input['facebook_page_id'])) ? $input['facebook_page_id'] : null;
 		$valid['is_minimized'] = (isset($input['is_minimized']) && !empty($input['is_minimized']) && $input['is_minimized'] === "TRUE" ) ? true : false;
 		$valid['ref_prefix'] = (isset($input['ref_prefix']) && !empty($input['ref_prefix'])) ? $input['ref_prefix'] : null;
-		$valid['custom_fb_sdk_app_id'] = (isset($input['custom_fb_sdk_app_id']) && !empty($input['custom_fb_sdk_app_id'])) ? $input['custom_fb_sdk_app_id'] : null;
+		$valid['fb_sdk_custom_app_id'] = (isset($input['fb_sdk_custom_app_id']) && !empty($input['fb_sdk_custom_app_id'])) ? $input['fb_sdk_custom_app_id'] : null;
+		$valid['fb_sdk_locale_language'] = (isset($input['fb_sdk_locale_language']) && !empty($input['fb_sdk_locale_language'])) ? $input['fb_sdk_locale_language'] : 'en_US';
 
     	return $valid;
     }

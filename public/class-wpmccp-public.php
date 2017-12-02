@@ -77,9 +77,10 @@ class WPMCCP_Public {
 	 * Facebook SDK to initialize
 	 */
     public function wpmccp_fb_sdk() {
-		$facebook_app_id = isset($this->WPMCCP_options['custom_fb_sdk_app_id']) && ! empty($this->WPMCCP_options['custom_fb_sdk_app_id']) ? $this->WPMCCP_options['custom_fb_sdk_app_id'] : 1678638095724206;
+		$facebook_app_id = isset($this->WPMCCP_options['fb_sdk_custom_app_id']) && ! empty($this->WPMCCP_options['fb_sdk_custom_app_id']) ? $this->WPMCCP_options['fb_sdk_custom_app_id'] : 1678638095724206;
+		$fb_locale_lang = isset($this->WPMCCP_options['fb_sdk_locale_language']) && ! empty($this->WPMCCP_options['fb_sdk_locale_language']) ? $this->WPMCCP_options['fb_sdk_locale_language'] : 'en_US';
 
-		echo '<script>window.fbAsyncInit=function(){FB.init({appId : "' . $facebook_app_id . '", autoLogAppEvents : true, xfbml : true, version : "v2.11"});}; (function(d, s, id){var js, fjs=d.getElementsByTagName(s)[0]; if (d.getElementById(id)){return;}js=d.createElement(s); js.id=id; js.src="https://connect.facebook.net/en_US/sdk.js"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>';
+		echo '<script>window.fbAsyncInit=function(){FB.init({appId : "' . $facebook_app_id . '", autoLogAppEvents : true, xfbml : true, version : "v2.11"});}; (function(d, s, id){var js, fjs=d.getElementsByTagName(s)[0]; if (d.getElementById(id)){return;}js=d.createElement(s); js.id=id; js.src="https://connect.facebook.net/' . $fb_locale_lang . '/sdk.js"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>';
     }
 
 	/**
