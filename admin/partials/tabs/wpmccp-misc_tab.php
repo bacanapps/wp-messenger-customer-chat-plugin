@@ -20,7 +20,7 @@
 
 			<div class="postbox">
 
-				<h2><span><?php esc_attr_e( 'Ref Attribute', 'WpAdminStyle' ); ?></span></h2>
+				<h2><span><?php esc_attr_e( 'Ref PREFIX', 'WpAdminStyle' ); ?></span></h2>
 
 				<div class="inside">
 
